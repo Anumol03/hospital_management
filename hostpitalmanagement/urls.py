@@ -25,10 +25,16 @@ urlpatterns = [
     path('register/',views.SignUpView.as_view(),name="signup"),
     path('',views.SignInView.as_view(),name="signin"),
     path("password/change/",views.PasswordResetView.as_view(),name="password-reset"),
+     path("create/timeslot/",views.CreateTimeSlotView.as_view(),name="addtime-slot"),
     path('index/',views.IndexView.as_view(),name="index"),
     path('doctor-add/',views.DoctorCreateView.as_view(),name="doctor-add"),
     path('department/create/',views.create_department, name='add-department'),
     path('department/list/',views.department_list, name='department-list'),
     path('department/edit/<int:department_id>/', views.edit_department, name='edit-department'),
     path('department/delete/<int:department_id>/', views.delete_department, name='delete-department'),
+    path('create_appointment/', views.create_appointment, name='create_appointment'),
+
+    path('appointment_confirmation/', views.send_confirmation_email, name='appointment_confirmation'),
+    path('appointment_rejection/', views.send_rejection_email, name='appointment_rejection'),
+   
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
